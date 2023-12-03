@@ -53,7 +53,7 @@ def main():
         ],
         [sg.Button("Colorize")],
     ]
-    window = sg.Window("Image Viewer", elements, size=(650, 500))
+    window = sg.Window("Portrait Colorizer", elements, size=(650, 500))
     images = False
     while True:
         event, values = window.read()
