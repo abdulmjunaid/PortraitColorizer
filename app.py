@@ -5,29 +5,29 @@ from PIL import Image, ImageTk
 from main import *
 
 
-def parse_folder(path):
-    images = glob.glob(f"{path}/*.jpg") + glob.glob(f"{path}/*.png")
-    return images
-
-
 def load_image(path, window):
-    img = image2lab(path)
-    gray = lab2grayscale(img)
-    gray = (gray * 255).astype(np.uint8)
-    image = Image.fromarray(gray, mode=None)
-    image.thumbnail((400, 400))
-    photo_img = ImageTk.PhotoImage(image)
-    window["image"].update(data=photo_img)
+    try:
+        img = image2lab(path)
+        gray = lab2grayscale(img)
+        gray = (gray * 255).astype(np.uint8)
+        image = Image.fromarray(gray, mode=None)
+        image.thumbnail((400, 400))
+        photo_img = ImageTk.PhotoImage(image)
+        window["image"].update(data=photo_img)
+    except:
+        print("unable to open file")
 
 
 def color_image(path, window):
-    img = color(path)
-    img = (img * 255).astype(np.uint8)
-    image = Image.fromarray(img, mode=None)
-    image.thumbnail((400, 400))
-    photo_img = ImageTk.PhotoImage(image)
-    window["color"].update(data=photo_img)
-
+    try:
+        img = color(path)
+        img = (img * 255).astype(np.uint8)
+        image = Image.fromarray(img, mode=None)
+        image.thumbnail((400, 400))
+        photo_img = ImageTk.PhotoImage(image)
+        window["color"].update(data=photo_img)
+    except:
+        print("unable to open file")
 
 def main():
     elements = [
