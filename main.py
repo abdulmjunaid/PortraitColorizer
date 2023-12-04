@@ -42,7 +42,7 @@ def color(img):
     test_img = image2lab(img)
 
     output1 = model.predict(test_img)
-    output1 = output1 * (128 + 64)
+    output1 = output1 * (128 )
 
     result = np.zeros((224, 224, 3))
     result[:, :, 0] = test_img[0][:, :, 0]
